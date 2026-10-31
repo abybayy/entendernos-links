@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mateo García · Enlaces</title>
+<link rel="stylesheet" href="./styles.css">
+<style>
+  :root { --carmin:#FF3399; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:var(--font-sans);
+    background:
+      radial-gradient(120% 60% at 50% 0%, rgba(105,192,190,0.25) 0%, rgba(238,248,252,0) 60%),
+      linear-gradient(180deg, var(--celeste-claro) 0%, #fff 100%);
+    min-height:100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="./_ds_bundle.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel">
+    // Fechas de la preventa (zona America/Montevideo): cambiarlas acá
+    const FECHAS = {
+      inicioPreventa: "2026-11-03T00:00", // martes 3/11: arranca la preventa
+      ultimoDiaPreventa: "2026-11-17",    // martes 17/11: último día del precio especial (solo para el texto)
+      ventaOficial: "2026-11-18T08:00",   // miércoles 18/11 08:00: nuevos montos en Mercado Pago
+    };
+    const dm = (iso) => parseInt(iso.slice(8, 10), 10) + "/" + iso.slice(5, 7);
+    // URLs de pago: cambiarlas acá
+    const PAGOS = {
+      ninez: "https://mpago.la/1gw6th8",
+      adolescencia: "https://mpago.la/18KMFZR",
+      adultez: "https://mpago.la/2FXRMT5",
+      packX3: "", // pendiente: vacío = botón inactivo "Próximamente"
+    };
+    const { Avatar, LinkRow, Badge, Olitas } = window.MateoGarcADesignSystem_88efc5;
+    const sans = { fontFamily: "var(--font-sans)" };
+    const groupLabel = { ...sans, margin: "0 0 -4px 4px", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)" };
+    const IWhats = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.8-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1 2.7.2.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>);
+    const IGlobe = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>);
+    const IInsta = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>);
+    const ICards = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"><rect x="3" y="6" width="12" height="15" rx="2"/><path d="M8 6l3-2.5 8 4.5-3 13-7-4"/></svg>);
+    const IPlay = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10.2 8.6l5.3 3.4-5.3 3.4z" fill="currentColor" stroke="none"/></svg>);
+    const IHeart = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20s-7-4.5-9-9c-1.3-3 .5-6 3.5-6 2 0 3.2 1.3 3.5 2.2.3-.9 1.5-2.2 3.5-2.2 3 0 4.8 3 3.5 6-2 4.5-8 9-8 9z"/></svg>);
+
+    const priceNote = { ...sans, margin: "0 43px 0 0", textAlign: "right", fontSize: "13px", color: "var(--text-muted)" };
+    const fechaSim = new URLSearchParams(location.search).get("fecha"); // prueba: ?fecha=2026-11-18T07:59
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "America/Montevideo", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+    const ahoraMvd = p.year + "-" + p.month + "-" + p.day + "T" + p.hour + ":" + p.minute;
+    const ahora = fechaSim ? (fechaSim.length === 10 ? fechaSim + "T12:00" : fechaSim) : ahoraMvd; // "AAAA-MM-DDTHH:MM"
+    const etapa = ahora < FECHAS.inicioPreventa ? "proximamente" : ahora < FECHAS.ventaOficial ? "preventa" : "venta";
+    const isPostPreventa = etapa === "venta";
+    const isProximamente = etapa === "proximamente";
+    const urlOk = (u) => !!u && u.trim() !== "" && u.trim() !== "#";
+    const mazoOk = [PAGOS.ninez, PAGOS.adolescencia, PAGOS.adultez].some(urlOk);
+    const packOk = urlOk(PAGOS.packX3);
+    const BuyWrap = ({ off, children }) => off ? <Disabled>{children}</Disabled> : children;
+    const Disabled = ({ children }) => (<div aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none", filter: "grayscale(1)" }}>{children}</div>);
+
+    const MAZOS = [
+      { label: "Mazo Niñez", bg: "#F70071", fg: "#fff", url: PAGOS.ninez },
+      { label: "Mazo Adolescencia", bg: "#69C0BE", fg: "#025756", url: PAGOS.adolescencia },
+      { label: "Mazo Adultez", bg: "#133A59", fg: "#fff", url: PAGOS.adultez },
+    ];
+    const IMP = ({ color }) => (<span style={{ flex: "none", width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.92)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}><svg width="20" height="14" viewBox="0 0 40 28" fill="none" stroke="#00A1E4" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="20" cy="14" rx="18" ry="12"/><path d="M8 13l5-4 5 3 4-3 4 3 4-1 3 2M14 15l3 3 3-1 3 2 3-1"/></svg></span>);
+
+    function BuySheet({ open, onClose }) {
+      React.useEffect(() => {
+        if (!open) return;
+        const k = (e) => { if (e.key === "Escape") onClose(); };
+        window.addEventListener("keydown", k);
+        return () => window.removeEventListener("keydown", k);
+      }, [open]);
+      if (!open) return null;
+      return (
+        <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 50, background: "rgba(9,31,48,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+          <div role="dialog" aria-modal="true" aria-labelledby="buy-title" onClick={(e) => e.stopPropagation()} style={{ position: "relative", width: "100%", maxWidth: "440px", background: "#fff", borderRadius: "24px 24px 0 0", padding: "14px 24px 32px", boxShadow: "var(--shadow-xl)", textAlign: "left" }}>
+            <div style={{ width: "40px", height: "4px", borderRadius: "4px", background: "var(--border-default)", margin: "0 auto 18px" }}></div>
+            <button onClick={onClose} aria-label="Cerrar" style={{ position: "absolute", top: "16px", right: "16px", width: "36px", height: "36px", border: "none", borderRadius: "50%", background: "var(--celeste-claro)", color: "var(--azul-profundo)", fontSize: "20px", lineHeight: 1, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
+            <h2 id="buy-title" style={{ ...sans, margin: "0 0 4px", fontSize: "20px", fontWeight: 800, color: "var(--azul-profundo)" }}>Comprar mazo</h2>
+            <p style={{ ...sans, margin: "0 0 20px", fontSize: "14px", color: "var(--text-muted)" }}>Elegí la franja etaria</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {MAZOS.filter((m) => urlOk(m.url)).map((m) => (
+                <a key={m.label} href={m.url} target="_blank" rel="noopener noreferrer" style={{ ...sans, display: "flex", alignItems: "center", gap: "14px", padding: "11px 20px 11px 12px", borderRadius: "var(--radius-pill)", background: m.bg, color: m.fg, textDecoration: "none", fontWeight: 700, fontSize: "16px" }}>
+                  <IMP /><span style={{ flex: 1 }}>{m.label}</span><span aria-hidden="true" style={{ opacity: 0.6, fontSize: "18px" }}>›</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function Tree() {
+      const [buyOpen, setBuyOpen] = React.useState(false);
+      return (<>
+        <div style={{ maxWidth: "440px", margin: "0 auto", padding: "44px 24px 56px", textAlign: "center" }}>
+          <a href="https://instagram.com/psico.mateogarcia" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mateo García" style={{ display: "inline-block", borderRadius: "50%" }}><Avatar role="img" aria-label="Mateo García" size={104} ring style={{ background: "var(--celeste) url('./assets/mateo-perfil.jpg') 46% 30% / 115% auto no-repeat" }} /></a>
+          <h1 style={{ ...sans, margin: "18px 0 4px", fontWeight: 800, fontSize: "24px", color: "var(--azul-profundo)" }}>Lic. Mateo García Moreno</h1>
+          <p style={{ ...sans, margin: "0 0 12px", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--text-muted)" }}>Psicólogo · Psicogerontólogo</p>
+          <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", margin: "0 0 8px", fontSize: "16px", color: "var(--azul-600)", lineHeight: 1.5 }}>“Acompañar también salva vidas.”</p>
+          <Olitas color="var(--teal)" width={84} style={{ margin: "0 auto 28px" }} />
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px", textAlign: "left" }}>
+            <p style={groupLabel}>El mazo Entendernos</p>
+            <LinkRow tone="teal" href="https://entendernos.pages.dev/" icon={<IPlay />} meta="Gratis">Probar mazo online</LinkRow>
+
+            {!isPostPreventa && <p style={{ ...groupLabel, marginTop: "14px" }}>{isProximamente ? "Preventa 2° edición, desde el " + dm(FECHAS.inicioPreventa) : "Preventa 2° edición, hasta el " + dm(FECHAS.ultimoDiaPreventa)}</p>}
+            <BuyWrap off={isProximamente || !mazoOk}><div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>{(isProximamente || !mazoOk) ? <LinkRow tone="carmin" href={undefined} tabIndex={-1} onClick={(e) => e.preventDefault()} icon={<ICards />} meta="Próximamente">1 mazo</LinkRow> : <LinkRow tone="carmin" href="#" role="button" onClick={(e) => { e.preventDefault(); setBuyOpen(true); }} icon={<ICards />} meta={isPostPreventa ? "$640" : "$570"}>1 mazo</LinkRow>}{etapa === "preventa" && mazoOk && <p style={priceNote}>Después $640</p>}</div></BuyWrap>
+            <BuyWrap off={isProximamente || !packOk}><div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>{(isProximamente || !packOk) ? <LinkRow tone="carmin" href={undefined} tabIndex={-1} onClick={(e) => e.preventDefault()} icon={<ICards />} meta="Próximamente">Pack x3</LinkRow> : <LinkRow tone="carmin" href={PAGOS.packX3} icon={<ICards />} meta={isPostPreventa ? "$1.750" : "$1.500"}>Pack x3</LinkRow>}{etapa === "preventa" && packOk && <p style={priceNote}>Después $1.750</p>}</div></BuyWrap>
+
+            <p style={{ ...groupLabel, marginTop: "14px" }}>Contacto</p>
+            <LinkRow tone="deep" href="https://wa.me/59898917770" icon={<IWhats />} meta="+598 98 917 770">Escribime por WhatsApp</LinkRow>
+            <Disabled><LinkRow tone="white" href={undefined} tabIndex={-1} onClick={(e) => e.preventDefault()} icon={<IGlobe />} meta="Próximamente">Sitio web profesional</LinkRow></Disabled>
+            <LinkRow tone="white" href="https://instagram.com/psico.mateogarcia" icon={<IInsta />} meta="@psico.mateogarcia">Instagram</LinkRow>
+
+            <p style={{ ...groupLabel, marginTop: "14px" }}>Además</p>
+            <LinkRow tone="white" href="https://www.ancianosuruguay.org/" target="_blank" rel="noopener noreferrer" icon={<IHeart />} meta="ONG">Bienestar del Anciano</LinkRow>
+          </div>
+
+          <div style={{ marginTop: "40px", display: "flex", justifyContent: "center", gap: "10px", alignItems: "center" }}>
+            <div style={{ width: "30px", height: "30px", borderRadius: "var(--radius-circle)", background: "var(--azul-profundo)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img src="./assets/logos/logo-mateo-negativo.svg" alt="" style={{ width: "20px", height: "20px" }} />
+            </div>
+            <span style={{ ...sans, fontSize: "12px", color: "var(--text-muted)" }}>Montevideo, Uruguay</span>
+          </div>
+        </div>
+        <BuySheet open={buyOpen} onClose={() => setBuyOpen(false)} />
+      </>);
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<Tree />);
+  </script>
+</body>
+</html>

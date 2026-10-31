@@ -1,0 +1,137 @@
+/* ============================================================
+   COLORS — Lic. Mateo García Moreno / Entendernos
+   6-color palette extracted from the Entendernos logo.
+   Validated AA/AAA and color-blind safe.
+   Vibe: human + warm. Never clinical, never corporate.
+   ============================================================ */
+
+:root {
+  /* ---------- BRAND CORE (the validated 6) ---------- */
+  --azul-profundo:   #133A59; /* dominante — circulo del logo personal, titulares */
+  --celeste:         #ABCAD7; /* secundario — circulo Entendernos, fondos suaves */
+  --teal:            #69C0BE; /* acento fresco — verde petroleo, frescura */
+  --coral:           #F18166; /* acento calido — cercania, humanidad */
+  --carmin:          #E4084B; /* acento energia — CTA, lo vivo */
+  --celeste-claro:   #EEF8FC; /* superficie — breathing room, fondos de seccion */
+
+  /* ---------- AZUL PROFUNDO scale (Adultos) ----------
+     Derivada por luminosidad OKLCH del base exacto #133A59.
+     Progresión claro→oscuro consistente, mismo matiz, para impresión. */
+  --azul-950: #091F30;
+  --azul-900: #09263D;
+  --azul-800: #0E304B;
+  --azul-700: #133A59; /* = base impresión Adultos */
+  --azul-600: #26557C;
+  --azul-500: #3F729E;
+  --azul-400: #5F90BC;
+  --azul-300: #83AFD6;
+  --azul-200: #ACCDEC;
+  --azul-100: #DBECFC;
+  --azul-50:  #EFF4F8;
+
+  /* ---------- CELESTE scale ---------- */
+  --celeste-600: #6E97A8;
+  --celeste-500: #87AEBE;
+  --celeste-400: #ABCAD7; /* = base */
+  --celeste-300: #C4DAE3;
+  --celeste-200: #DBE9EF;
+  --celeste-100: #EEF8FC; /* = celeste-claro */
+
+  /* ---------- TEAL scale (Adolescentes) ----------
+     Derivada por luminosidad OKLCH del base exacto #69C0BE. */
+  --teal-50:  #EAFAF8;
+  --teal-900: #023635;
+  --teal-800: #025756;
+  --teal-700: #067B79;
+  --teal-600: #289F9D;
+  --teal-500: #69C0BE; /* = base impresión Adolescentes */
+  --teal-400: #83CECC;
+  --teal-300: #9EDBD9;
+  --teal-200: #BAE8E6;
+  --teal-100: #D7F4F2;
+
+  /* ---------- CORAL scale ---------- */
+  --coral-700: #D85A3C;
+  --coral-600: #E86A4D;
+  --coral-500: #F18166; /* = base */
+  --coral-300: #F7AB97;
+  --coral-100: #FCE4DD;
+
+  /* ---------- CARMIN scale (Niñez) ----------
+     Derivada por luminosidad OKLCH del base exacto #E4084B. */
+  --carmin-50:  #FFF2F2;
+  --carmin-900: #530015;
+  --carmin-800: #7F0426;
+  --carmin-700: #B00738;
+  --carmin-600: #E4084B; /* = base impresión Niñez */
+  --carmin-500: #FA3F62;
+  --carmin-400: #FD7583;
+  --carmin-300: #FD9EA5;
+  --carmin-200: #FEC2C5;
+  --carmin-100: #FFE4E4;
+
+  /* ---------- NEUTRALS (warm blue-grey, never cold) ---------- */
+  --blanco:    #FFFFFF;
+  --marfil:    #FAFCFD; /* off-white de pagina */
+  --gris-50:   #F4F7F9;
+  --gris-100:  #E8EEF2;
+  --gris-200:  #D6E0E6;
+  --gris-300:  #B7C6CF;
+  --gris-400:  #8A9BA5;
+  --gris-500:  #62727C;
+  --gris-600:  #45555F;
+  --gris-700:  #2F3E47;
+  --tinta:     #1B2A33; /* near-black con tinte azul */
+
+  /* ============================================================
+     SEMANTIC ALIASES — use these in components
+     ============================================================ */
+
+  /* Text */
+  --text-strong:  var(--azul-profundo);
+  --text-body:    #2C3E48;
+  --text-muted:   #5E6E78;
+  --text-subtle:  #8A9BA5;
+  --text-inverse: #FFFFFF;
+  --text-on-celeste: var(--azul-profundo);
+  --text-link:    var(--azul-600);
+  --text-link-hover: var(--azul-800);
+
+  /* Surfaces */
+  --surface-page:    #FFFFFF;
+  --surface-soft:    var(--celeste-claro);   /* secciones, breathing room */
+  --surface-tint:    var(--azul-50);
+  --surface-card:    #FFFFFF;
+  --surface-celeste: var(--celeste);
+  --surface-deep:    var(--azul-profundo);   /* bloques oscuros, hero */
+  --surface-deeper:  var(--azul-900);
+  --surface-overlay: rgba(19, 58, 89, 0.55); /* scrims sobre foto */
+
+  /* Borders */
+  --border-soft:    #E6EDF1;
+  --border-default: #D6E0E6;
+  --border-strong:  var(--azul-200);
+  --border-deep:    var(--azul-profundo);
+
+  /* Accents / actions */
+  --accent-cta:        var(--carmin);
+  --accent-cta-hover:  var(--carmin-700);
+  --accent-cta-active: var(--carmin-800);
+  --accent-warm:       var(--coral);
+  --accent-fresh:      var(--teal);
+  --accent-calm:       var(--celeste);
+
+  /* Status (derived from palette, not generic web colors) */
+  --status-success:    var(--teal-600);
+  --status-success-bg: var(--teal-100);
+  --status-warning:    var(--coral-600);
+  --status-warning-bg: var(--coral-100);
+  --status-danger:     var(--carmin-700);
+  --status-danger-bg:  var(--carmin-100);
+  --status-info:       var(--azul-600);
+  --status-info-bg:    var(--azul-100);
+
+  /* Focus */
+  --focus-ring:   0 0 0 4px rgba(19, 58, 89, 0.22);
+  --focus-ring-carmin: 0 0 0 4px rgba(228, 8, 75, 0.22);
+}
